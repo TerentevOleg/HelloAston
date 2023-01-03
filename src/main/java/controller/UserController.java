@@ -77,9 +77,11 @@ public class UserController extends HttpServlet {
         String pathInfo = request.getPathInfo();
         try {
             if (pathInfo != null) {
+                String[] parts = pathInfo.split("/");
+                if (parts.length == 2) {
+                    remove(request, response);
+                }
                 removeFromFriends(request, response);
-            } else {
-                remove(request, response);
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);

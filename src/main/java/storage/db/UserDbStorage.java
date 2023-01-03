@@ -99,6 +99,16 @@ public class UserDbStorage implements UserStorage {
         }
     }
 
+    public void clearUsers() {
+        try {
+            String sql = "DELETE FROM users";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException("UserDbStorage: clearUser sql exception.");
+        }
+    }
+
     public static User makeUser(ResultSet resultSet) throws SQLException {
         Date birthday = resultSet.getDate("birthday");
         return new User(resultSet.getLong("id"),

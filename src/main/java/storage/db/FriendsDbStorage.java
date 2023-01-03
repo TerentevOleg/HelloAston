@@ -88,4 +88,14 @@ public class FriendsDbStorage implements FriendsStorage {
         }
         return commonFriends;
     }
+
+    public void clearFriends() {
+        try {
+            String sql = "DELETE FROM friends";
+            Statement statement = connection.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException("UserDbStorage: clearUser sql exception.");
+        }
+    }
 }

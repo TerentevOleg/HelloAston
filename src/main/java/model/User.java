@@ -1,32 +1,26 @@
 package model;
 
-import com.google.gson.*;
-import com.google.gson.annotations.Expose;
-
 import javax.validation.constraints.*;
-import java.lang.reflect.Type;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;
 import java.util.Objects;
 
 public class User {
 
-    private long id;                       // идентификатор
+    private long id;
 
     @NotNull(message = "User email is null")
     @Email(message = "Invalid user email format")
-    private String email;           // электронная почта
+    private String email;
 
     @NotBlank(message = "User login is blank")
     @Pattern(regexp = "^\\S*$", message = "User login contains a whitespace")
-    private String login;           // логин пользователя
+    private String login;
 
-    private String name;                  // имя для отображения
+    private String name;
 
     @NotNull
     @Past(message = "User birthday is in future")
-    private LocalDate birthday;     // дата рождения
+    private LocalDate birthday;
 
     public User() {
     }
