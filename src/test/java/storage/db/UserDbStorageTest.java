@@ -27,12 +27,6 @@ class UserDbStorageTest {
             .withUsername("postgres")
             .withPassword("iamroot");
 
-    /*@Container
-    private PostgreSQLContainer POSTGRESQL_CONTAINER = new PostgreSQLContainer()
-            .withDatabaseName("postgres")
-            .withUsername("postgres")
-            .withPassword("iamroot");*/
-
     @BeforeEach
     public void setUp() {
         POSTGRESQL_CONTAINER.start();
@@ -227,14 +221,4 @@ class UserDbStorageTest {
 
         assertEquals(0, users1.size());
     }
-
-    private void clearDb() {
-        Collection<User> users = userDbStorage.getUsers();
-        if (!users.isEmpty()) {
-            for (int i = 0; i < users.size(); i++) {
-                userDbStorage.remove(i);
-            }
-        }
-    }
-
 }
